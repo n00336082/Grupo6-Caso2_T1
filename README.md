@@ -16,7 +16,7 @@ Este proyecto corresponde al desarrollo del Caso 2 de la Evaluación T1. Consist
 ## Pasos para ejecutar el proyecto
 
 1. Abrir una terminal en la carpeta del proyecto:
-   cd caso2-billetera-angular
+   cd caso2-billetera-angular-main
 
 2. Instalar las dependencias necesarias:
    npm install
