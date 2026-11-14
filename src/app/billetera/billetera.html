@@ -1,0 +1,56 @@
+<div class="container py-4">
+  <div class="row g-4">
+    <div class="col-12 col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+          <span class="fw-semibold">Billetera digital</span>
+          <span class="badge bg-secondary">PADRE</span>
+        </div>
+        <div class="card-body">
+          <div class="mb-4">
+            <span class="text-muted d-block small">Saldo disponible</span>
+            <h2 class="text-success fw-bold my-1">
+              S/ {{ saldo.toFixed(2) }}
+            </h2>
+          </div>
+
+          <h5 class="card-title mb-3">Movimientos</h5>
+
+          @if (movimientos.length === 0) {
+            <div class="alert alert-light border text-center text-muted py-3">
+              Aún no hay movimientos
+            </div>
+          }
+
+          <div class="list-group">
+            @for (movimiento of movimientos; track $index) {
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  @if (movimiento.tipo === 'Recarga') {
+                    <span class="badge bg-success">Recarga</span>
+                  } @else {
+                    <span class="badge bg-danger">Gasto</span>
+                  }
+                </div>
+                <span
+                  class="fw-bold"
+                  [class.text-success]="movimiento.tipo === 'Recarga'"
+                  [class.text-danger]="movimiento.tipo === 'Gasto'"
+                >
+                  {{ movimiento.tipo === 'Recarga' ? '+ S/ ' : '- S/ ' }}{{ movimiento.monto.toFixed(2) }}
+                </span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <app-nuevo-movimiento
+        [saldo]="saldo"
+        (movimientoValido)="procesarMovimiento($event)"
+      ></app-nuevo-movimiento>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="card shadow-sm h-100">
+  <div class="card-header d-flex justify-content-between align-items-center bg-light">
+    <span class="fw-semibold">Nuevo movimiento</span>
+    <span class="badge bg-primary">HIJO</span>
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <label class="form-label">Tipo de movimiento</label>
+      <select class="form-select" [(ngModel)]="tipo">
+        <option value="Recarga">Recarga</option>
+        <option value="Gasto">Gasto</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Monto (S/)</label>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="0.00"
+        [(ngModel)]="monto"
+      />
+    </div>
+
+    @if (esGastoInvalido()) {
+      <div class="alert alert-danger py-2 mb-3">
+        Saldo insuficiente para realizar el gasto
+      </div>
+    }
+
+    <button
+      class="btn btn-primary w-100"
+      [disabled]="!formularioValido()"
+      (click)="registrar()"
+    >
+      Registrar movimiento
+    </button>
+  </div>
+</div>
