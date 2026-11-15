@@ -15,8 +15,12 @@ export class NuevoMovimientoComponent {
   tipo: string = 'Recarga';
   monto: number | null = null;
 
+  esMontoInvalido(): boolean {
+    return this.monto !== null && this.monto <= 0;
+  }
+
   esGastoInvalido(): boolean {
-    return this.tipo === 'Gasto' && this.monto !== null && this.monto > this.saldo;
+    return this.tipo === 'Gasto' && this.monto !== null && this.monto > 0 && this.monto > this.saldo;
   }
 
   formularioValido(): boolean {
