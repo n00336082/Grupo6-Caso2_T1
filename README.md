@@ -12,8 +12,7 @@ Versiones utilizadas:
 - Bootstrap: 5.3.8
 
 Pasos para ejecutar el proyecto:
-1. Abrir una terminal en la carpeta del proyecto:
-   cd caso2-billetera-angular
+1. Abrir una terminal en la carpeta del proyecto.
 
 2. Instalar las dependencias necesarias:
    npm install
